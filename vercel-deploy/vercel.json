@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/slack/events",
-      "dest": "/api/slack.js"
+      "dest": "/api/slack"
     }
   ]
 }
