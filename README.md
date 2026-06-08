@@ -73,13 +73,13 @@ Save the file — `slack run` will restart automatically. Message your agent aga
 
 ## Step 7: Deploy to Vercel (make it permanent)
 
-`slack run` connects your agent while your Codespace is open. To make it always-on, deploy to Vercel:
+`slack run` only works while your terminal is open. To make your agent always-on, deploy it:
 
-1. Switch to HTTP mode — see `DEPLOY.md` for the changes needed
-2. Push to GitHub
-3. Connect the repo to Vercel
-4. Set environment variables (`SLACK_BOT_TOKEN`, `SLACK_SIGNING_SECRET`, `ANTHROPIC_API_KEY`)
-5. Update your app's manifest `request_url` to point at your Vercel deployment
+```bash
+slack deploy
+```
+
+That's it. This command deploys your code to Vercel and updates your Slack app to use the new URL.
 
 ## What's Next
 
