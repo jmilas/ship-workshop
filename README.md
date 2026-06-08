@@ -81,8 +81,8 @@ slack deploy
 ```
 
 What each step does:
-1. **setup-vercel.sh** — configures your project for HTTP mode and adds the Vercel deploy hook
-2. **slack deploy** — deploys to Vercel, sets env vars, and updates your Slack app's request URL
+1. **setup-vercel.sh** — configures your project for HTTP mode, creates the Vercel project, and sets the request URL in the manifest
+2. **slack deploy** — pushes the manifest to Slack, deploys your code to Vercel, and sets env vars
 
 ## What's Next
 
