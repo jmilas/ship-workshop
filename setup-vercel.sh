@@ -22,13 +22,16 @@ cp "$WORKSHOP_DIR/vercel-deploy/vercel.json" "$PROJECT_DIR/vercel.json"
 mkdir -p "$PROJECT_DIR/api"
 cp "$WORKSHOP_DIR/vercel-deploy/api/slack.js" "$PROJECT_DIR/api/slack.js"
 
-# Disable socket mode in manifest
+# Disable socket mode in manifest (CLI won't push this, but keeps local file correct)
 sed -i 's/"socket_mode_enabled": true/"socket_mode_enabled": false/' "$PROJECT_DIR/manifest.json"
 
 echo "✓ Project configured for Vercel deployment."
 echo ""
 echo "Next steps:"
-echo "  1. Run: slack app install --environment deployed"
-echo "  2. Run: bash /workspaces/ship-workshop/setup-vercel-credentials.sh"
-echo "  3. Run: slack deploy"
+echo "  1. Disable Socket Mode in the web UI:"
+echo "     Run: slack app settings --app deployed"
+echo "     Then: Settings → Socket Mode → toggle OFF"
+echo ""
+echo "  2. Deploy:"
+echo "     Run: slack deploy"
 echo ""

@@ -1,15 +1,7 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/slack.js",
-      "use": "@vercel/node"
+  "functions": {
+    "api/slack.js": {
+      "maxDuration": 60
     }
-  ],
-  "routes": [
-    {
-      "src": "/slack/events",
-      "dest": "/api/slack"
-    }
-  ]
+  }
 }

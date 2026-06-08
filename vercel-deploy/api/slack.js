@@ -1,16 +1,12 @@
-import 'dotenv/config';
-
 import bolt from '@slack/bolt';
-
 const { App, ExpressReceiver, LogLevel } = bolt;
-
 import { registerListeners } from '../listeners/index.js';
 
 const receiver = new ExpressReceiver({
-  signingSecret: process.env.SLACK_SIGNING_SECRET || 'workshop-no-verify',
+  signingSecret: 'no-verify',
   signatureVerification: false,
   processBeforeResponse: true,
-  endpoints: '/',
+  endpoints: '/api/slack',
 });
 
 const app = new App({
