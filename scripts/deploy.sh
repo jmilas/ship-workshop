@@ -43,7 +43,7 @@ echo "Updated manifest.json request_url to: $REQUEST_URL"
 
 # Push the manifest update to Slack
 echo "Updating Slack app manifest..."
-slack manifest update --app deployed
+slack manifest update --app deployed --force
 
 echo ""
 echo "Deploy complete!"
