@@ -3,6 +3,14 @@ set -e
 
 echo "Deploying to Vercel..."
 
+# Push env vars to Vercel
+if [ -f .env.vercel ]; then
+  echo "Setting Vercel environment variables..."
+  grep -v '^#' .env.vercel | grep -v '^$' | while IFS='=' read -r key value; do
+    echo "$value" | vercel env add "$key" production --force --yes 2>/dev/null || true
+  done
+fi
+
 # Deploy to Vercel and capture the production URL
 DEPLOY_OUTPUT=$(vercel deploy --prod --yes 2>&1)
 DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep -oE 'https://[a-zA-Z0-9._-]+\.vercel\.app' | tail -1)
