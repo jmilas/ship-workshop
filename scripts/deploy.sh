@@ -41,13 +41,11 @@ rm -f manifest.json.bak
 
 echo "Updated manifest.json request_url to: $REQUEST_URL"
 
-# Push the manifest update to Slack
-echo "Updating Slack app manifest..."
-slack manifest update --app deployed --force
-
 echo ""
 echo "Deploy complete!"
 echo "  Vercel URL: $DEPLOY_URL"
 echo "  Request URL: $REQUEST_URL"
 echo ""
-echo "Your agent is now live. DM it in Slack!"
+echo "The manifest has been updated locally."
+echo "Run 'slack deploy' again to push the new request URL to Slack."
+echo ""
