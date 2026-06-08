@@ -76,11 +76,24 @@ Save the file — `slack run` will restart automatically. Message your agent aga
 `slack run` only works while your terminal is open. To make your agent always-on, deploy it:
 
 ```bash
+slack app install --environment deployed
+```
+
+This creates a separate production version of your app. Now open the app settings to grab credentials:
+
+```bash
 bash /workspaces/ship-workshop/setup-vercel.sh
+```
+
+The script will open your app settings page — copy the **Signing Secret** (Basic Information) and **Bot Token** (OAuth & Permissions) when prompted.
+
+Then deploy:
+
+```bash
 slack deploy
 ```
 
-The setup script configures your project for Vercel, then `slack deploy` deploys your code and updates your Slack app to use the new URL.
+This deploys your code to Vercel and updates your Slack app to use the new URL.
 
 ## What's Next
 
