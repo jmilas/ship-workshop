@@ -37,10 +37,15 @@ You'll see a slash command like `/slackauthticket ABC123...`. Paste that into an
 slack create agent my-agent
 ```
 
-Follow the prompts. This creates a new Slack app, configures it, and scaffolds the project — all in one command.
+When prompted, select:
+1. **Support agent** (not Starter agent)
+2. **claude-agent-sdk** as the framework
+
+This creates a new Slack app, configures it, and scaffolds the project — all in one command.
 
 ```bash
 cd my-agent
+npm install
 ```
 
 ## Step 5: Run Your Agent
