@@ -3,12 +3,16 @@ set -e
 
 echo "Deploying to Vercel..."
 
-# Push env vars to Vercel
-if [ -f .env.vercel ]; then
+# Push env vars to Vercel from CLI-provided environment
+if [ -n "$SLACK_BOT_TOKEN" ]; then
   echo "Setting Vercel environment variables..."
-  grep -v '^#' .env.vercel | grep -v '^$' | while IFS='=' read -r key value; do
-    echo "$value" | vercel env add "$key" production --force --yes 2>/dev/null || true
-  done
+  echo "$SLACK_BOT_TOKEN" | vercel env add SLACK_BOT_TOKEN production --force --yes 2>/dev/null || true
+fi
+
+if [ -n "$OPENAI_API_KEY" ]; then
+  echo "$OPENAI_API_KEY" | vercel env add OPENAI_API_KEY production --force --yes 2>/dev/null || true
+elif [ -n "$ANTHROPIC_API_KEY" ]; then
+  echo "$ANTHROPIC_API_KEY" | vercel env add ANTHROPIC_API_KEY production --force --yes 2>/dev/null || true
 fi
 
 # Deploy to Vercel and capture the production URL

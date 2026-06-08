@@ -77,16 +77,12 @@ Save the file — `slack run` will restart automatically. Message your agent aga
 
 ```bash
 bash /workspaces/ship-workshop/setup-vercel.sh
-slack app install --environment deployed
-bash /workspaces/ship-workshop/setup-vercel-credentials.sh
 slack deploy
 ```
 
 What each step does:
 1. **setup-vercel.sh** — configures your project for HTTP mode and adds the Vercel deploy hook
-2. **slack app install** — creates and installs the production version of your app
-3. **setup-vercel-credentials.sh** — opens app settings so you can copy the Signing Secret and Bot Token
-4. **slack deploy** — deploys to Vercel and updates your Slack app's request URL
+2. **slack deploy** — deploys to Vercel, sets env vars, and updates your Slack app's request URL
 
 ## What's Next
 
