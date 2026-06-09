@@ -103,6 +103,20 @@ What each step does:
 
 ---
 
+## Appendix: What setup-vercel.sh Does
+
+The script handles four things needed to move your agent from local (`slack run`) to deployed (Vercel):
+
+1. **Switches from Socket Mode to HTTP mode** — `slack run` uses a WebSocket (your machine connects to Slack). On Vercel, it's the reverse: Slack sends HTTP requests to your serverless function. The script flips `socket_mode_enabled` to `false` in your manifest.
+
+2. **Adds an HTTP entry point** — copies `api/slack.js` into your project, which is a Vercel serverless function that receives Slack events via HTTP instead of WebSocket.
+
+3. **Does an initial deploy to get your URL** — you can't tell Slack where to send events until you have a URL. The script deploys once to establish it.
+
+4. **Writes the URL into the manifest** — so that when `slack deploy` runs, it tells Slack: "send all events here."
+
+---
+
 ## Appendix: Using Your Own Vercel Account
 
 If you'd prefer to deploy to your own Vercel account instead of the workshop's shared team:
