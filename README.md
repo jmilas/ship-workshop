@@ -126,8 +126,4 @@ bash /workspaces/ship-workshop/setup-vercel.sh
 slack deploy
 ```
 
-The setup script will use your logged-in Vercel session instead of the shared token. You'll need your own OpenAI API key as well:
-
-```bash
-export OPENAI_API_KEY=<your-key>
-```
+The setup script will use your logged-in Vercel session instead of the shared token. The OpenAI API key from the Codespace will still be used.
