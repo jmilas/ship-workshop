@@ -34,18 +34,19 @@ You'll see a slash command like `/slackauthticket ABC123...`. Paste that into an
 ## Step 4: Create Your Agent
 
 ```bash
-slack create agent my-agent
+slack create agent
 ```
 
-When prompted, select:
-1. **Support agent** (not Starter agent)
-2. **Bolt for JavaScript** as the language/framework
-3. **openai-agents-sdk** as the AI framework
+When prompted:
+1. Name your agent something unique (e.g., your company name + `-support`)
+2. Select **Support agent** (not Starter agent)
+3. Select **Bolt for JavaScript** as the language/framework
+4. Select **openai-agents-sdk** as the AI framework
 
 This creates a new Slack app, configures it, and scaffolds the project — all in one command.
 
 ```bash
-cd my-agent
+cd <your-agent-name>
 ```
 
 ## Step 5: Run Your Agent
