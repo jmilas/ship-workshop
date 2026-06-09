@@ -100,3 +100,34 @@ What each step does:
 - **Human-in-the-loop:** Pause for approval before sensitive operations
 - **Go deeper:** [Vercel Academy — Slack Agents](https://vercel.com/academy/slack-agents)
 - **Automate setup:** [Slack Agent Skill for coding agents](https://vercel.com/blog/building-slack-agents-can-be-easy)
+
+---
+
+## Appendix: Using Your Own Vercel Account
+
+If you'd prefer to deploy to your own Vercel account instead of the workshop's shared team:
+
+1. Log in to Vercel from the Codespace:
+
+```bash
+vercel login
+```
+
+2. Override the workshop token with your own (or unset it):
+
+```bash
+unset VERCEL_TOKEN
+```
+
+3. Run the setup and deploy as normal:
+
+```bash
+bash /workspaces/ship-workshop/setup-vercel.sh
+slack deploy
+```
+
+The setup script will use your logged-in Vercel session instead of the shared token. You'll need your own OpenAI API key as well:
+
+```bash
+export OPENAI_API_KEY=<your-key>
+```
