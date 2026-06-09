@@ -5,7 +5,7 @@ Ship London Workshop — build an AI-powered Slack agent, run it locally, then d
 ## Prerequisites
 
 - A GitHub account (to open the Codespace)
-- A Vercel account (for deployment at the end)
+- A Vercel account (optional — only needed if deploying to your own account instead of the workshop's shared team)
 
 ## Step 1: Open the Codespace
 
@@ -93,13 +93,6 @@ slack deploy
 What each step does:
 1. **setup-vercel.sh** — configures your project for HTTP mode, creates the Vercel project, and sets the request URL in the manifest
 2. **slack deploy** — pushes the manifest to Slack, deploys your code to Vercel, and sets env vars
-
-## What's Next
-
-- **Add tools:** Give your agent the ability to call APIs, look up data, or take actions
-- **Human-in-the-loop:** Pause for approval before sensitive operations
-- **Go deeper:** [Vercel Academy — Slack Agents](https://vercel.com/academy/slack-agents)
-- **Automate setup:** [Slack Agent Skill for coding agents](https://vercel.com/blog/building-slack-agents-can-be-easy)
 
 ---
 
