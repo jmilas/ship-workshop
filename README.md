@@ -60,16 +60,25 @@ Your agent is now live in your developer sandbox. Open Slack, find your agent un
 
 ## Step 6: Customize Your Agent
 
-Open `agent/agent.js` and find the `SYSTEM_PROMPT`. Change it to whatever you want:
+This is a support agent — make it yours. Open `agent/agent.js` and find the `SYSTEM_PROMPT`. Replace it with your own product's support persona:
 
 ```js
 const SYSTEM_PROMPT = `\
-You are ShipBot, the unofficial concierge of the Vercel Ship conference.
-You're enthusiastic about deployment, serverless, and edge computing.
-Keep answers short and punchy. End every message with a shipping pun.`;
+You are the support agent for [Your Company/Product].
+You help customers troubleshoot issues, answer questions about features,
+and escalate complex problems to the right team.
+
+## What you support
+- [Describe your product in 1-2 sentences]
+- [List common issues customers hit]
+
+## Your tone
+- Friendly and professional
+- Acknowledge the customer's frustration before jumping to solutions
+- Keep answers concise — link to docs when possible`;
 ```
 
-Save the file — `slack run` will restart automatically. Message your agent again to see the new personality.
+Save the file — `slack run` will restart automatically. Message your agent with a support question about your product and see how it handles it.
 
 ## Step 7: Deploy to Vercel (make it permanent)
 
