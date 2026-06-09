@@ -25,6 +25,11 @@ cp "$WORKSHOP_DIR/vercel-deploy/api/slack.js" "$PROJECT_DIR/api/slack.js"
 # Disable socket mode in manifest
 sed -i 's/"socket_mode_enabled": true/"socket_mode_enabled": false/' "$PROJECT_DIR/manifest.json"
 
+# Fix already_reacted error in emoji reaction tool
+if [ -f "$PROJECT_DIR/agent/tools/add-emoji-reaction.js" ]; then
+  sed -i "s/return \`Could not add reaction: \${err.data?.error || err.message}\`;/if (err.data?.error === 'already_reacted') return \`Reacted with :\${emoji_name}:\`;\n      return \`Could not add reaction: \${err.data?.error || err.message}\`;/" "$PROJECT_DIR/agent/tools/add-emoji-reaction.js"
+fi
+
 # Deploy a stub to Vercel to establish the project URL
 echo "Creating Vercel project..."
 DEPLOY_OUTPUT=$(vercel deploy --prod --yes --token "$VERCEL_TOKEN" 2>&1)
