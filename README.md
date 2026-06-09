@@ -46,7 +46,6 @@ This creates a new Slack app, configures it, and scaffolds the project — all i
 
 ```bash
 cd my-agent
-npm install
 ```
 
 ## Step 5: Run Your Agent
