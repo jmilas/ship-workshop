@@ -39,7 +39,8 @@ slack create agent my-agent
 
 When prompted, select:
 1. **Support agent** (not Starter agent)
-2. **claude-agent-sdk** as the framework
+2. **Bolt for JavaScript** as the language/framework
+3. **openai-agents-sdk** as the AI framework
 
 This creates a new Slack app, configures it, and scaffolds the project — all in one command.
 
