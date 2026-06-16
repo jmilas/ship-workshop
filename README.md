@@ -19,7 +19,9 @@ While the Codespace builds, open a new tab:
 
 1. Go to https://api.slack.com/developer-program
 2. Sign up / sign in
-3. You'll get a fully-featured Slack workspace to develop in
+3. Choose the option to **provision a sandbox with an event code**
+4. Enter the event code: **ship-london**
+5. You'll get a fully-featured Slack workspace to develop in
 
 ## Step 3: Authenticate the Slack CLI
 
