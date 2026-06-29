@@ -3,10 +3,18 @@
 # Prevents failures when many users hit the API concurrently.
 
 PROJECT_DIR="${1:-$(pwd)}"
-AGENT_FILE="$PROJECT_DIR/agent/agent.js"
 
-if [ ! -f "$AGENT_FILE" ]; then
-  echo "⚠️  Could not find agent/agent.js in $PROJECT_DIR"
+# Find the agent file — template may use agent.js or support-agent.js
+AGENT_FILE=""
+for candidate in "$PROJECT_DIR/agent/agent.js" "$PROJECT_DIR/agent/support-agent.js"; do
+  if [ -f "$candidate" ]; then
+    AGENT_FILE="$candidate"
+    break
+  fi
+done
+
+if [ -z "$AGENT_FILE" ]; then
+  echo "⚠️  Could not find agent file in $PROJECT_DIR/agent/"
   exit 1
 fi
 
@@ -38,6 +46,7 @@ async function withRetry(fn, maxAttempts = 3) {\
 # Wrap the run() calls with withRetry
 sed -i 's/return await run(agentWithMcp, inputItems, { context: deps });/return await withRetry(() => run(agentWithMcp, inputItems, { context: deps }));/' "$AGENT_FILE"
 sed -i 's/return await run(starterAgent, inputItems, { context: deps });/return await withRetry(() => run(starterAgent, inputItems, { context: deps }));/' "$AGENT_FILE"
+sed -i 's/return await run(supportAgent, inputItems, { context: deps });/return await withRetry(() => run(supportAgent, inputItems, { context: deps }));/' "$AGENT_FILE"
 
 rm -f "$AGENT_FILE.bak"
-echo "✓ Added retry logic to agent/agent.js"
+echo "✓ Added retry logic to $(basename "$AGENT_FILE")"

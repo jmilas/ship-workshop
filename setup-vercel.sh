@@ -31,7 +31,7 @@ if [ -f "$PROJECT_DIR/agent/tools/add-emoji-reaction.js" ]; then
 fi
 
 # Add retry logic for API rate limits
-bash "$WORKSHOP_DIR/scripts/patch-retry.sh" "$PROJECT_DIR"
+bash "$WORKSHOP_DIR/scripts/patch-retry.sh" "$PROJECT_DIR" || true
 
 # Deploy a stub to Vercel to establish the project URL
 echo "Creating Vercel project..."
