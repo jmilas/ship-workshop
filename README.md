@@ -136,3 +136,15 @@ slack deploy
 ```
 
 The setup script will use your logged-in Vercel session instead of the shared token. The OpenAI API key from the Codespace will still be used.
+
+---
+
+## Appendix: Fixing API Rate Limit Errors
+
+If your agent occasionally fails to respond (especially when many people are testing at the same time), it's likely hitting API rate limits. Run this to add automatic retry logic:
+
+```bash
+bash /workspaces/ship-workshop/scripts/patch-retry.sh
+```
+
+This patches `agent/agent.js` to retry up to 3 times with exponential backoff when the API returns a rate limit error. It's safe to run multiple times — it won't duplicate itself.
