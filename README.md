@@ -1,6 +1,6 @@
 # Build a Slack Agent in 30 Minutes
 
-Ship London Workshop — build an AI-powered Slack agent, run it locally, then deploy to Vercel.
+Vercel Ship Workshop — build an AI-powered Slack agent, run it locally, then deploy to Vercel.
 
 ## Prerequisites
 
