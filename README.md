@@ -63,7 +63,21 @@ Your agent is now live in your developer sandbox. Open Slack, find your agent un
 
 ## Step 6: Customize Your Agent
 
-This is a support agent — make it yours. Open `agent/agent.js` and find the `SYSTEM_PROMPT`. Replace it with your own product's support persona:
+Make it yours — start with the suggested prompts that appear when someone opens a conversation with your agent.
+
+Open `listeners/events/assistant-thread-started.js` and replace the prompts with your own:
+
+```js
+const SUGGESTED_PROMPTS = [
+  { title: 'Check Order Status', message: 'Where is my order #12345?' },
+  { title: 'Reset Password', message: 'I need to reset my password' },
+  { title: 'Pricing', message: 'What plans do you offer?' },
+];
+```
+
+Save the file — `slack run` will restart automatically. Open a new conversation with your agent and you'll see your prompts appear instantly.
+
+**Next:** Customize the agent's personality. Open the agent file in `agent/` (e.g. `agent/support-agent.js`) and find the `SYSTEM_PROMPT`. Replace it with your own product's support persona:
 
 ```js
 const SYSTEM_PROMPT = `\
@@ -81,7 +95,7 @@ and escalate complex problems to the right team.
 - Keep answers concise — link to docs when possible`;
 ```
 
-Save the file — `slack run` will restart automatically. Message your agent with a support question about your product and see how it handles it.
+Save and message your agent with a support question about your product to see how it handles it.
 
 ## Step 7: Deploy to Vercel (make it permanent)
 
